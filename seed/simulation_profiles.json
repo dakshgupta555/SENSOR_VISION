@@ -1,0 +1,161 @@
+[
+  {
+    "id": "sim-nor-ok",
+    "label": "NOR gate — reference-consistent",
+    "scenario": "reference_consistent",
+    "description": "TI SN74HC02N at 3.3 V. Current below sensor floor, stable, all 16 truth-table vectors pass, marking matches the reference.",
+    "component_profile_id": "nor-74hc02-dip14",
+    "reference_id": "ref-ti-sn74hc02n",
+    "identity": {"manufacturer": "Texas Instruments", "part_number": "SN74HC02N", "package": "PDIP-14", "batch": "A7K2 51C", "date_code": "2251"},
+    "marking": {"logo": "TI", "lines": ["SN74HC02N", "2251 A7K2"], "quality": "good", "variant": "genuine"},
+    "rail_v": 3.3,
+    "stream": {"vbus": 3.301, "vbus_noise": 0.002, "i_ma": 0.004, "i_noise": 0.035, "quantize_ma": 0.1, "wander_ma": 0.0, "drift_ma_per_min": 0.0, "spike_rate_hz": 0.0, "spike_ma": 0.0, "functional_bump_ma": 0.1},
+    "functional": {"fail_vectors": [], "voh_v": 3.29, "vol_v": 0.012},
+    "iv": {"model": {"vk": 0.62, "n_slope": 0.045}, "reference_model": {"vk": 0.62, "n_slope": 0.045}},
+    "optical": {
+      "logo_consistency": {"status": "pass", "note": "Logo form and position match the reference image"},
+      "marking_placement": {"status": "pass", "note": "Line spacing and font consistent with reference"},
+      "package_appearance": {"status": "pass", "note": "Uniform glossy mould compound; ejector-pin marks present"},
+      "surface_irregularities": {"status": "pass", "note": "No sanding marks or coating under raking light"},
+      "pin_alignment": {"status": "pass", "note": "Leads straight, uniform finish"},
+      "physical_damage": {"status": "pass", "note": "No chips or cracks"}
+    },
+    "expected_result": "Reference-consistent"
+  },
+  {
+    "id": "sim-nor-deviation",
+    "label": "NOR gate — suspicious electrical deviation",
+    "scenario": "electrical_deviation",
+    "description": "Marked SN74HC02N but draws ~2.7 mA with an unstable supply current and a low output-high level — behaviour typical of a bipolar-logic die remarked as HCMOS.",
+    "component_profile_id": "nor-74hc02-dip14",
+    "reference_id": "ref-ti-sn74hc02n",
+    "identity": {"manufacturer": "Texas Instruments", "part_number": "SN74HC02N", "package": "PDIP-14", "batch": "A7K2 51C", "date_code": "2251"},
+    "marking": {"logo": "TI", "lines": ["SN74HC02N", "2251 A7K2"], "quality": "worn", "variant": "remarked"},
+    "rail_v": 3.3,
+    "stream": {"vbus": 3.296, "vbus_noise": 0.003, "i_ma": 2.72, "i_noise": 0.06, "quantize_ma": 0.1, "wander_ma": 0.03, "drift_ma_per_min": 0.0, "spike_rate_hz": 0.25, "spike_ma": 0.7, "functional_bump_ma": 0.4},
+    "functional": {"fail_vectors": [], "voh_v": 2.62, "vol_v": 0.21},
+    "iv": {"model": {"vk": 1.12, "n_slope": 0.11}, "reference_model": {"vk": 0.62, "n_slope": 0.045}},
+    "optical": {
+      "logo_consistency": {"status": "warn", "note": "Logo stroke weight heavier than reference"},
+      "marking_placement": {"status": "warn", "note": "Second line offset ~0.3 mm right of reference position"},
+      "package_appearance": {"status": "pass", "note": "Package outline matches PDIP-14"},
+      "surface_irregularities": {"status": "fail", "note": "Matte top surface with fine parallel scratches — consistent with resurfacing"},
+      "pin_alignment": {"status": "pass", "note": "Leads straight"},
+      "physical_damage": {"status": "pass", "note": "No chips or cracks"}
+    },
+    "expected_result": "Significant deviation detected"
+  },
+  {
+    "id": "sim-mcu-ok",
+    "label": "Microcontroller — reference-consistent",
+    "scenario": "reference_consistent",
+    "description": "ATmega328P-PU at 5 V, 8 MHz internal RC, running the heartbeat firmware. Current within datasheet range, heartbeat on frequency, signature 1E 95 0F.",
+    "component_profile_id": "mcu-atmega328p-dip28",
+    "reference_id": "ref-microchip-atmega328p",
+    "identity": {"manufacturer": "Microchip Technology", "part_number": "ATmega328P-PU", "package": "PDIP-28", "batch": "", "date_code": "2318"},
+    "marking": {"logo": "MICROCHIP", "lines": ["ATMEGA328P-PU", "2318 7LT"], "quality": "good", "variant": "genuine"},
+    "rail_v": 5.0,
+    "clock": "8 MHz internal RC",
+    "stream": {"vbus": 4.982, "vbus_noise": 0.003, "i_ma": 4.86, "i_noise": 0.035, "quantize_ma": 0.1, "wander_ma": 0.004, "drift_ma_per_min": 0.0, "spike_rate_hz": 0.0, "spike_ma": 0.0, "ripple_hz": 10, "ripple_ma": 0.03, "functional_bump_ma": 0.05},
+    "functional": {"heartbeat_hz": 10.03, "signature": "1E950F"},
+    "optical": {
+      "logo_consistency": {"status": "pass", "note": "Manufacturer mark consistent with reference"},
+      "marking_placement": {"status": "pass", "note": "Laser marking crisp and aligned"},
+      "package_appearance": {"status": "pass", "note": "Uniform mould compound"},
+      "surface_irregularities": {"status": "pass", "note": "No resurfacing evidence"},
+      "pin_alignment": {"status": "pass", "note": "Leads straight"},
+      "physical_damage": {"status": "pass", "note": "None visible"}
+    },
+    "expected_result": "Reference-consistent"
+  },
+  {
+    "id": "sim-mcu-abnormal",
+    "label": "Microcontroller — abnormal supply current",
+    "scenario": "abnormal_current",
+    "description": "ATmega328P-PU at 5 V draws ~11.6 mA and rising (above the 9 mA datasheet maximum) with spikes, although firmware still runs. Possible damage, overstress or a non-conforming die.",
+    "component_profile_id": "mcu-atmega328p-dip28",
+    "reference_id": "ref-microchip-atmega328p",
+    "identity": {"manufacturer": "Microchip Technology", "part_number": "ATmega328P-PU", "package": "PDIP-28", "batch": "", "date_code": "2318"},
+    "marking": {"logo": "MICROCHIP", "lines": ["ATMEGA328P-PU", "2318 7LT"], "quality": "good", "variant": "genuine"},
+    "rail_v": 5.0,
+    "clock": "8 MHz internal RC",
+    "stream": {"vbus": 4.975, "vbus_noise": 0.004, "i_ma": 11.6, "i_noise": 0.22, "quantize_ma": 0.1, "wander_ma": 0.02, "drift_ma_per_min": 1.6, "spike_rate_hz": 0.5, "spike_ma": 1.8, "ripple_hz": 10, "ripple_ma": 0.05, "functional_bump_ma": 0.1},
+    "functional": {"heartbeat_hz": 10.01, "signature": "1E950F"},
+    "optical": {
+      "logo_consistency": {"status": "pass", "note": "Manufacturer mark consistent with reference"},
+      "marking_placement": {"status": "pass", "note": "Laser marking aligned"},
+      "package_appearance": {"status": "warn", "note": "Slight discolouration near pin 7–8"},
+      "surface_irregularities": {"status": "pass", "note": "No resurfacing evidence"},
+      "pin_alignment": {"status": "pass", "note": "Leads straight"},
+      "physical_damage": {"status": "pass", "note": "None visible"}
+    },
+    "expected_result": "Investigation recommended"
+  },
+  {
+    "id": "sim-nand-ok",
+    "label": "NAND gate — reference-consistent",
+    "scenario": "reference_consistent",
+    "description": "NXP-marked 74HC00N (legacy DIP type, date code 2010) at 3.3 V. All vectors pass, current below sensor floor.",
+    "component_profile_id": "nand-74hc00-dip14",
+    "reference_id": "ref-nexperia-74hc00",
+    "identity": {"manufacturer": "Nexperia", "part_number": "74HC00N", "package": "DIP-14", "batch": "", "date_code": "1029"},
+    "marking": {"logo": "NXP", "lines": ["74HC00N", "1029 CK"], "quality": "good", "variant": "genuine"},
+    "rail_v": 3.3,
+    "stream": {"vbus": 3.299, "vbus_noise": 0.002, "i_ma": 0.003, "i_noise": 0.035, "quantize_ma": 0.1, "wander_ma": 0.0, "drift_ma_per_min": 0.0, "spike_rate_hz": 0.0, "spike_ma": 0.0, "functional_bump_ma": 0.1},
+    "functional": {"fail_vectors": [], "voh_v": 3.28, "vol_v": 0.015},
+    "iv": {"model": {"vk": 0.61, "n_slope": 0.047}, "reference_model": {"vk": 0.62, "n_slope": 0.045}},
+    "optical": {
+      "logo_consistency": {"status": "pass", "note": "Text mark consistent with reference"},
+      "marking_placement": {"status": "pass", "note": "Consistent"},
+      "package_appearance": {"status": "pass", "note": "Normal ageing for date code"},
+      "surface_irregularities": {"status": "pass", "note": "None"},
+      "pin_alignment": {"status": "pass", "note": "Leads straight"},
+      "physical_damage": {"status": "pass", "note": "None"}
+    },
+    "expected_result": "Reference-consistent"
+  },
+  {
+    "id": "sim-opamp-ok",
+    "label": "Operational amplifier — reference-consistent",
+    "scenario": "reference_consistent",
+    "description": "TI LM358P at 5 V. Quiescent current ~0.7 mA (datasheet ≤ 1.2 mA for both amplifiers); follower tracks within a few millivolts.",
+    "component_profile_id": "opamp-lm358-dip8",
+    "reference_id": "ref-ti-lm358p",
+    "identity": {"manufacturer": "Texas Instruments", "part_number": "LM358P", "package": "PDIP-8", "batch": "", "date_code": "2236"},
+    "marking": {"logo": "TI", "lines": ["LM358P", "2236 Z4"], "quality": "good", "variant": "genuine"},
+    "rail_v": 5.0,
+    "stream": {"vbus": 4.987, "vbus_noise": 0.003, "i_ma": 0.71, "i_noise": 0.035, "quantize_ma": 0.1, "wander_ma": 0.0, "drift_ma_per_min": 0.0, "spike_rate_hz": 0.0, "spike_ma": 0.0, "functional_bump_ma": 0.05},
+    "functional": {"offset_mv": 3.2, "gain_error": 0.001, "adc_noise_mv": 6},
+    "optical": {
+      "logo_consistency": {"status": "pass", "note": "Consistent"},
+      "marking_placement": {"status": "pass", "note": "Consistent"},
+      "package_appearance": {"status": "pass", "note": "Normal"},
+      "surface_irregularities": {"status": "pass", "note": "None"},
+      "pin_alignment": {"status": "pass", "note": "Leads straight"},
+      "physical_damage": {"status": "pass", "note": "None"}
+    },
+    "expected_result": "Reference-consistent"
+  },
+  {
+    "id": "sim-unknown",
+    "label": "Unknown component — missing manufacturer reference",
+    "scenario": "missing_reference",
+    "description": "Poorly legible marking that matches no record in the local database. Supply current is measured but there is nothing to compare it with.",
+    "component_profile_id": "generic-unknown",
+    "reference_id": null,
+    "identity": {"manufacturer": "", "part_number": "", "package": "DIP-14", "batch": "", "date_code": ""},
+    "marking": {"logo": "", "lines": ["QX4C1Z85", "K7 0R3"], "quality": "poor", "variant": "unknown"},
+    "rail_v": 3.3,
+    "stream": {"vbus": 3.298, "vbus_noise": 0.003, "i_ma": 1.82, "i_noise": 0.05, "quantize_ma": 0.1, "wander_ma": 0.01, "drift_ma_per_min": 0.0, "spike_rate_hz": 0.0, "spike_ma": 0.0, "functional_bump_ma": 0.0},
+    "functional": {},
+    "optical": {
+      "logo_consistency": {"status": "not_assessed", "note": "No reference logo available"},
+      "marking_placement": {"status": "not_assessed", "note": "No reference available"},
+      "package_appearance": {"status": "pass", "note": "DIP-14 outline"},
+      "surface_irregularities": {"status": "warn", "note": "Uneven gloss; cannot compare without reference"},
+      "pin_alignment": {"status": "pass", "note": "Leads straight"},
+      "physical_damage": {"status": "pass", "note": "None"}
+    },
+    "expected_result": "Inconclusive"
+  }
+]

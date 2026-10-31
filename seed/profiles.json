@@ -1,0 +1,287 @@
+[
+  {
+    "id": "nor-74hc02-dip14",
+    "name": "74HC02 quad 2-input NOR gate",
+    "short_name": "74HC02 NOR",
+    "category": "logic_ic",
+    "function": "NOR",
+    "base_part": "74HC02",
+    "logic_family": "HC (high-speed CMOS)",
+    "default_reference_id": "ref-ti-sn74hc02n",
+    "package": "DIP-14",
+    "package_key": "DIP-14",
+    "physical_demo": true,
+    "pins": [
+      {"pin": 1, "name": "1Y", "role": "output"}, {"pin": 2, "name": "1A", "role": "input"}, {"pin": 3, "name": "1B", "role": "input"},
+      {"pin": 4, "name": "2Y", "role": "output"}, {"pin": 5, "name": "2A", "role": "input"}, {"pin": 6, "name": "2B", "role": "input"},
+      {"pin": 7, "name": "GND", "role": "ground"}, {"pin": 8, "name": "3A", "role": "input"}, {"pin": 9, "name": "3B", "role": "input"},
+      {"pin": 10, "name": "3Y", "role": "output"}, {"pin": 11, "name": "4A", "role": "input"}, {"pin": 12, "name": "4B", "role": "input"},
+      {"pin": 13, "name": "4Y", "role": "output"}, {"pin": 14, "name": "VCC", "role": "power"}
+    ],
+    "supply": {"vcc_pins": [14], "gnd_pins": [7], "min_v": 2.0, "max_v": 6.0, "allowed_rails": [3.3, 5.0], "default_rail": 3.3},
+    "functional_test": {
+      "type": "logic_truth_table",
+      "function": "NOR",
+      "gates": [
+        {"name": "Gate 1", "inputs": [2, 3], "output": 1},
+        {"name": "Gate 2", "inputs": [5, 6], "output": 4},
+        {"name": "Gate 3", "inputs": [8, 9], "output": 10},
+        {"name": "Gate 4", "inputs": [11, 12], "output": 13}
+      ],
+      "vectors": [[0, 0, 1], [0, 1, 0], [1, 0, 0], [1, 1, 0]],
+      "settle_us": 200,
+      "static_hold": "inputs_low"
+    },
+    "supported_measurements": ["bus_voltage", "shunt_voltage", "current", "power", "current_stability", "truth_table", "output_levels_adc", "pin_iv_signature"],
+    "evaluation": [
+      {"key": "supply_voltage", "label": "Supply voltage at DUT", "kind": "supply_condition", "unit": "V", "weight": 0.10, "mandatory": true, "spec": "vcc_range"},
+      {"key": "supply_current", "label": "Static supply current", "kind": "current_limit", "unit": "mA", "weight": 0.35, "mandatory": true, "spec_order": ["icc_static_max"], "critical_multiple": 10},
+      {"key": "current_stability", "label": "Supply-current stability", "kind": "stability", "unit": "mA", "weight": 0.15, "mandatory": false, "limits": {"pass_abs_ma": 0.15, "warn_abs_ma": 0.40, "pass_cv": 0.03, "warn_cv": 0.10}},
+      {"key": "functional", "label": "NOR truth table (4 gates × 4 vectors)", "kind": "truth_table", "weight": 0.30, "mandatory": false, "critical_on_fail": true},
+      {"key": "output_high", "label": "Output high level (VOH)", "kind": "output_high", "unit": "V", "weight": 0.05, "mandatory": false, "spec": "voh_derived", "adc_tolerance_v": 0.10},
+      {"key": "output_low", "label": "Output low level (VOL)", "kind": "output_low", "unit": "V", "weight": 0.05, "mandatory": false, "spec": "vol_derived", "adc_tolerance_v": 0.10},
+      {"key": "pin_iv", "label": "Pin I-V signature (unpowered)", "kind": "iv_signature", "weight": 0.10, "mandatory": false, "probe_pin": 2}
+    ],
+    "preconditions": [
+      {"key": "supply_path", "label": "DUT VCC (pin 14) is fed through the current sensor (VIN+ → VIN−); DUT GND (pin 7) is common with the ESP32 ground"},
+      {"key": "inputs_defined", "label": "Every gate input is wired to the fixture or tied to GND/VCC (floating CMOS inputs raise ICC)"},
+      {"key": "series_resistors", "label": "1 kΩ series resistor on every fixture line between the ESP32 and the DUT"}
+    ],
+    "limitations": [
+      "Datasheet ICC (µA range) is below the INA219 resolution (~0.1 mA with the stock 0.1 Ω shunt). The current check can bound ICC, not resolve it. An INA226 improves resolution to ~25 µA.",
+      "Propagation delay and input leakage are not measured by this fixture.",
+      "Output levels are read with the ESP32 ADC and are only used when ADC sensing is enabled in Device Settings."
+    ],
+    "builtin": true
+  },
+  {
+    "id": "nand-74hc00-dip14",
+    "name": "74HC00 quad 2-input NAND gate",
+    "short_name": "74HC00 NAND",
+    "category": "logic_ic",
+    "function": "NAND",
+    "base_part": "74HC00",
+    "logic_family": "HC (high-speed CMOS)",
+    "default_reference_id": "ref-ti-sn74hc00n",
+    "package": "DIP-14",
+    "package_key": "DIP-14",
+    "physical_demo": false,
+    "pins": [
+      {"pin": 1, "name": "1A", "role": "input"}, {"pin": 2, "name": "1B", "role": "input"}, {"pin": 3, "name": "1Y", "role": "output"},
+      {"pin": 4, "name": "2A", "role": "input"}, {"pin": 5, "name": "2B", "role": "input"}, {"pin": 6, "name": "2Y", "role": "output"},
+      {"pin": 7, "name": "GND", "role": "ground"}, {"pin": 8, "name": "3Y", "role": "output"}, {"pin": 9, "name": "3A", "role": "input"},
+      {"pin": 10, "name": "3B", "role": "input"}, {"pin": 11, "name": "4Y", "role": "output"}, {"pin": 12, "name": "4A", "role": "input"},
+      {"pin": 13, "name": "4B", "role": "input"}, {"pin": 14, "name": "VCC", "role": "power"}
+    ],
+    "supply": {"vcc_pins": [14], "gnd_pins": [7], "min_v": 2.0, "max_v": 6.0, "allowed_rails": [3.3, 5.0], "default_rail": 3.3},
+    "functional_test": {
+      "type": "logic_truth_table",
+      "function": "NAND",
+      "gates": [
+        {"name": "Gate 1", "inputs": [1, 2], "output": 3},
+        {"name": "Gate 2", "inputs": [4, 5], "output": 6},
+        {"name": "Gate 3", "inputs": [9, 10], "output": 8},
+        {"name": "Gate 4", "inputs": [12, 13], "output": 11}
+      ],
+      "vectors": [[0, 0, 1], [0, 1, 1], [1, 0, 1], [1, 1, 0]],
+      "settle_us": 200,
+      "static_hold": "inputs_low"
+    },
+    "supported_measurements": ["bus_voltage", "shunt_voltage", "current", "power", "current_stability", "truth_table", "output_levels_adc", "pin_iv_signature"],
+    "evaluation": [
+      {"key": "supply_voltage", "label": "Supply voltage at DUT", "kind": "supply_condition", "unit": "V", "weight": 0.10, "mandatory": true, "spec": "vcc_range"},
+      {"key": "supply_current", "label": "Static supply current", "kind": "current_limit", "unit": "mA", "weight": 0.35, "mandatory": true, "spec_order": ["icc_static_max"], "critical_multiple": 10},
+      {"key": "current_stability", "label": "Supply-current stability", "kind": "stability", "unit": "mA", "weight": 0.15, "mandatory": false, "limits": {"pass_abs_ma": 0.15, "warn_abs_ma": 0.40, "pass_cv": 0.03, "warn_cv": 0.10}},
+      {"key": "functional", "label": "NAND truth table (4 gates × 4 vectors)", "kind": "truth_table", "weight": 0.30, "mandatory": false, "critical_on_fail": true},
+      {"key": "output_high", "label": "Output high level (VOH)", "kind": "output_high", "unit": "V", "weight": 0.05, "mandatory": false, "spec": "voh_derived", "adc_tolerance_v": 0.10},
+      {"key": "output_low", "label": "Output low level (VOL)", "kind": "output_low", "unit": "V", "weight": 0.05, "mandatory": false, "spec": "vol_derived", "adc_tolerance_v": 0.10},
+      {"key": "pin_iv", "label": "Pin I-V signature (unpowered)", "kind": "iv_signature", "weight": 0.10, "mandatory": false, "probe_pin": 1}
+    ],
+    "preconditions": [
+      {"key": "supply_path", "label": "DUT VCC (pin 14) is fed through the current sensor (VIN+ → VIN−); DUT GND (pin 7) is common with the ESP32 ground"},
+      {"key": "inputs_defined", "label": "Every gate input is wired to the fixture or tied to GND/VCC (floating CMOS inputs raise ICC)"},
+      {"key": "series_resistors", "label": "1 kΩ series resistor on every fixture line between the ESP32 and the DUT"}
+    ],
+    "limitations": [
+      "The 74HC00 pinout differs from the 74HC02 (inputs on pins 1–2 instead of 2–3). The fixture map is applied per profile; never reuse a NOR wiring assumption.",
+      "Datasheet ICC (µA range) is below the INA219 resolution; the check bounds ICC rather than resolving it."
+    ],
+    "builtin": true
+  },
+  {
+    "id": "opamp-lm358-dip8",
+    "name": "LM358 dual operational amplifier",
+    "short_name": "LM358 op-amp",
+    "category": "op_amp",
+    "function": "Dual op-amp",
+    "base_part": "LM358",
+    "logic_family": "",
+    "default_reference_id": "ref-ti-lm358p",
+    "package": "DIP-8",
+    "package_key": "DIP-8",
+    "physical_demo": false,
+    "pins": [
+      {"pin": 1, "name": "OUT1", "role": "output"}, {"pin": 2, "name": "IN1−", "role": "input"}, {"pin": 3, "name": "IN1+", "role": "input"},
+      {"pin": 4, "name": "V−", "role": "ground"}, {"pin": 5, "name": "IN2+", "role": "input"}, {"pin": 6, "name": "IN2−", "role": "input"},
+      {"pin": 7, "name": "OUT2", "role": "output"}, {"pin": 8, "name": "V+", "role": "power"}
+    ],
+    "supply": {"vcc_pins": [8], "gnd_pins": [4], "min_v": 3.0, "max_v": 30.0, "allowed_rails": [5.0], "default_rail": 5.0},
+    "functional_test": {
+      "type": "analog_buffer",
+      "description": "Amplifier 1 wired as a voltage follower (pin 1 to pin 2). ESP32 DAC drives IN1+ (pin 3); ADC reads the input node and OUT1.",
+      "drive_pin": 3,
+      "sense_in_key": "3s",
+      "sense_out_pin": 1,
+      "points_mv": [300, 800, 1300, 1800, 2300, 2800],
+      "tolerance_mv": 60
+    },
+    "supported_measurements": ["bus_voltage", "shunt_voltage", "current", "power", "current_stability", "analog_buffer"],
+    "evaluation": [
+      {"key": "supply_voltage", "label": "Supply voltage at DUT", "kind": "supply_condition", "unit": "V", "weight": 0.10, "mandatory": true, "spec": "vcc_range"},
+      {"key": "supply_current", "label": "Quiescent supply current (both amplifiers)", "kind": "current_limit", "unit": "mA", "weight": 0.40, "mandatory": true, "spec_order": ["icc_package"], "critical_multiple": 5},
+      {"key": "current_stability", "label": "Supply-current stability", "kind": "stability", "unit": "mA", "weight": 0.15, "mandatory": false, "limits": {"pass_abs_ma": 0.15, "warn_abs_ma": 0.40, "pass_cv": 0.05, "warn_cv": 0.12}},
+      {"key": "functional", "label": "Voltage-follower tracking (6 points)", "kind": "analog_buffer", "weight": 0.35, "mandatory": false, "critical_on_fail": false}
+    ],
+    "preconditions": [
+      {"key": "supply_path", "label": "V+ (pin 8) is fed through the current sensor; V− (pin 4) to common ground"},
+      {"key": "follower_wired", "label": "Pin 1 is tied to pin 2; amplifier 2 is configured as a follower with IN2+ (pin 5) to GND"},
+      {"key": "series_resistors", "label": "10 kΩ series resistor between OUT1 and the ESP32 ADC pin"}
+    ],
+    "limitations": [
+      "Input offset (≤7 mV) is below ESP32 ADC accuracy; the follower test checks gross tracking only.",
+      "Output swing, slew rate and bandwidth are not measured."
+    ],
+    "builtin": true
+  },
+  {
+    "id": "mcu-atmega328p-dip28",
+    "name": "ATmega328P microcontroller",
+    "short_name": "ATmega328P MCU",
+    "category": "microcontroller",
+    "function": "8-bit MCU",
+    "base_part": "ATMEGA328P",
+    "logic_family": "",
+    "default_reference_id": "ref-microchip-atmega328p",
+    "package": "DIP-28",
+    "package_key": "DIP-28",
+    "physical_demo": true,
+    "pins": [
+      {"pin": 1, "name": "RESET", "role": "input"}, {"pin": 2, "name": "PD0/RXD", "role": "io"}, {"pin": 3, "name": "PD1/TXD", "role": "output"},
+      {"pin": 4, "name": "PD2", "role": "io"}, {"pin": 5, "name": "PD3", "role": "io"}, {"pin": 6, "name": "PD4", "role": "io"},
+      {"pin": 7, "name": "VCC", "role": "power"}, {"pin": 8, "name": "GND", "role": "ground"}, {"pin": 9, "name": "PB6/XTAL1", "role": "io"},
+      {"pin": 10, "name": "PB7/XTAL2", "role": "io"}, {"pin": 11, "name": "PD5", "role": "io"}, {"pin": 12, "name": "PD6", "role": "io"},
+      {"pin": 13, "name": "PD7", "role": "io"}, {"pin": 14, "name": "PB0", "role": "io"}, {"pin": 15, "name": "PB1", "role": "io"},
+      {"pin": 16, "name": "PB2", "role": "io"}, {"pin": 17, "name": "PB3", "role": "io"}, {"pin": 18, "name": "PB4", "role": "io"},
+      {"pin": 19, "name": "PB5/SCK", "role": "output"}, {"pin": 20, "name": "AVCC", "role": "power"}, {"pin": 21, "name": "AREF", "role": "nc"},
+      {"pin": 22, "name": "GND", "role": "ground"}, {"pin": 23, "name": "PC0", "role": "io"}, {"pin": 24, "name": "PC1", "role": "io"},
+      {"pin": 25, "name": "PC2", "role": "io"}, {"pin": 26, "name": "PC3", "role": "io"}, {"pin": 27, "name": "PC4", "role": "io"},
+      {"pin": 28, "name": "PC5", "role": "io"}
+    ],
+    "supply": {"vcc_pins": [7, 20], "gnd_pins": [8, 22], "min_v": 1.8, "max_v": 5.5, "allowed_rails": [3.3, 5.0], "default_rail": 5.0},
+    "functional_test": {
+      "type": "mcu_firmware",
+      "description": "The DUT runs the IC VISION heartbeat firmware (firmware/dut_atmega328p_heartbeat). It toggles PB5 at 10 Hz and prints its signature bytes on TXD at 9600 baud.",
+      "heartbeat": {"pin": 19, "expected_hz": 10.0, "tolerance_pct": 10, "window_ms": 3000},
+      "uart_signature": {"pin": 3, "baud": 9600, "prefix": "ICV:SIG:", "expected": "1E950F", "window_ms": 4000}
+    },
+    "supported_measurements": ["bus_voltage", "shunt_voltage", "current", "power", "current_stability", "heartbeat", "uart_signature"],
+    "evaluation": [
+      {"key": "supply_voltage", "label": "Supply voltage at DUT", "kind": "supply_condition", "unit": "V", "weight": 0.10, "mandatory": true, "spec": "vcc_range"},
+      {"key": "supply_current", "label": "Active supply current (heartbeat firmware)", "kind": "current_limit", "unit": "mA", "weight": 0.30, "mandatory": true, "spec_order": ["icc_active_8mhz_5v"], "spec_applies": {"icc_active_8mhz_5v": {"rail_v": 5.0, "clock": "8 MHz internal RC"}}, "critical_multiple": 2.5},
+      {"key": "current_stability", "label": "Supply-current stability and drift", "kind": "stability", "unit": "mA", "weight": 0.15, "mandatory": false, "limits": {"pass_abs_ma": 0.15, "warn_abs_ma": 0.50, "pass_cv": 0.03, "warn_cv": 0.08, "drift_warn_ma_per_min": 0.30, "drift_fail_ma_per_min": 1.0}},
+      {"key": "heartbeat", "label": "Heartbeat frequency on PB5", "kind": "heartbeat", "unit": "Hz", "weight": 0.20, "mandatory": false},
+      {"key": "signature", "label": "Device signature reported over UART", "kind": "uart_signature", "weight": 0.25, "mandatory": false, "critical_on_fail": true}
+    ],
+    "clock_options": ["8 MHz internal RC", "16 MHz crystal"],
+    "default_clock": "8 MHz internal RC",
+    "clock_limits": [{"max_mhz": 4, "min_v": 1.8}, {"max_mhz": 10, "min_v": 2.7}, {"max_mhz": 20, "min_v": 4.5}],
+    "preconditions": [
+      {"key": "supply_path", "label": "VCC (pin 7) and AVCC (pin 20) are fed through the current sensor; pins 8 and 22 to common ground"},
+      {"key": "reset_pullup", "label": "RESET (pin 1) has a 10 kΩ pull-up to VCC"},
+      {"key": "heartbeat_fw", "label": "The DUT has been programmed with the IC VISION heartbeat firmware"},
+      {"key": "series_resistors", "label": "PB5 → ESP32 GPIO and TXD → ESP32 RX lines have series resistors (dividers at 5 V)"}
+    ],
+    "limitations": [
+      "Supply current alone does not verify microcontroller functionality; functional evidence comes from the heartbeat and signature tests.",
+      "The datasheet active-current row applies only at 8 MHz / 5 V. Other conditions need an empirical baseline from a known-good sample.",
+      "A blank (unprogrammed) device cannot be functionally screened by this fixture."
+    ],
+    "builtin": true
+  },
+  {
+    "id": "mcu-esp32-module",
+    "name": "ESP32 microcontroller (module)",
+    "short_name": "ESP32 module",
+    "category": "microcontroller",
+    "function": "Wi-Fi/BT SoC",
+    "base_part": "ESP32",
+    "logic_family": "",
+    "default_reference_id": "ref-espressif-esp32",
+    "package": "Module",
+    "package_key": "MODULE",
+    "physical_demo": false,
+    "pins": [
+      {"pin": "3V3", "name": "3V3", "role": "power"}, {"pin": "GND", "name": "GND", "role": "ground"},
+      {"pin": "EN", "name": "EN", "role": "input"}, {"pin": "TXD0", "name": "TXD0", "role": "output"},
+      {"pin": "RXD0", "name": "RXD0", "role": "input"}, {"pin": "IO0", "name": "IO0", "role": "input"}
+    ],
+    "supply": {"vcc_pins": ["3V3"], "gnd_pins": ["GND"], "min_v": 3.0, "max_v": 3.6, "allowed_rails": [3.3], "default_rail": 3.3},
+    "functional_test": {
+      "type": "boot_log",
+      "description": "After power-up the ROM bootloader prints a reset reason on TXD0. The tester listens for it.",
+      "uart": {"pin": "TXD0", "baud": 115200, "token": "rst:0x", "window_ms": 4000}
+    },
+    "supported_measurements": ["bus_voltage", "shunt_voltage", "current", "power", "current_stability", "boot_log"],
+    "evaluation": [
+      {"key": "supply_voltage", "label": "Supply voltage at DUT", "kind": "supply_condition", "unit": "V", "weight": 0.10, "mandatory": true, "spec": "vcc_range"},
+      {"key": "supply_current", "label": "Supply current (radio off)", "kind": "current_range", "unit": "mA", "weight": 0.30, "mandatory": true, "spec_order": ["icc_envelope"]},
+      {"key": "current_stability", "label": "Supply-current stability", "kind": "stability", "unit": "mA", "weight": 0.15, "mandatory": false, "limits": {"pass_abs_ma": 1.0, "warn_abs_ma": 3.0, "pass_cv": 0.05, "warn_cv": 0.15}},
+      {"key": "functional", "label": "ROM boot log detected", "kind": "boot_log", "weight": 0.45, "mandatory": false, "critical_on_fail": false}
+    ],
+    "preconditions": [
+      {"key": "supply_path", "label": "Module 3V3 is fed through the current sensor from a supply able to deliver ≥ 0.5 A"},
+      {"key": "uart_wired", "label": "Module TXD0 is wired to the tester RX pin with a common ground"}
+    ],
+    "limitations": [
+      "Supply current depends on the firmware loaded on the module; the datasheet envelope is a coarse check.",
+      "Radio performance is not tested."
+    ],
+    "builtin": true
+  },
+  {
+    "id": "generic-unknown",
+    "name": "Unidentified component (generic DIP)",
+    "short_name": "Unidentified",
+    "category": "custom",
+    "function": "Unknown",
+    "base_part": "",
+    "logic_family": "",
+    "default_reference_id": null,
+    "package": "DIP-14",
+    "package_key": "DIP-14",
+    "physical_demo": false,
+    "pins": [
+      {"pin": 1, "name": "1", "role": "nc"}, {"pin": 2, "name": "2", "role": "nc"}, {"pin": 3, "name": "3", "role": "nc"},
+      {"pin": 4, "name": "4", "role": "nc"}, {"pin": 5, "name": "5", "role": "nc"}, {"pin": 6, "name": "6", "role": "nc"},
+      {"pin": 7, "name": "GND?", "role": "ground"}, {"pin": 8, "name": "8", "role": "nc"}, {"pin": 9, "name": "9", "role": "nc"},
+      {"pin": 10, "name": "10", "role": "nc"}, {"pin": 11, "name": "11", "role": "nc"}, {"pin": 12, "name": "12", "role": "nc"},
+      {"pin": 13, "name": "13", "role": "nc"}, {"pin": 14, "name": "VCC?", "role": "power"}
+    ],
+    "supply": {"vcc_pins": [14], "gnd_pins": [7], "min_v": null, "max_v": null, "allowed_rails": [3.3, 5.0], "default_rail": 3.3},
+    "functional_test": null,
+    "supported_measurements": ["bus_voltage", "shunt_voltage", "current", "power", "current_stability"],
+    "evaluation": [
+      {"key": "supply_voltage", "label": "Supply voltage at DUT", "kind": "supply_condition", "unit": "V", "weight": 0.10, "mandatory": true, "spec": "vcc_range"},
+      {"key": "supply_current", "label": "Supply current", "kind": "current_limit", "unit": "mA", "weight": 0.40, "mandatory": true, "spec_order": []},
+      {"key": "current_stability", "label": "Supply-current stability", "kind": "stability", "unit": "mA", "weight": 0.15, "mandatory": false, "limits": {"pass_abs_ma": 0.15, "warn_abs_ma": 0.40, "pass_cv": 0.05, "warn_cv": 0.12}}
+    ],
+    "preconditions": [
+      {"key": "supply_path", "label": "Suspected VCC pin is fed through the current sensor"},
+      {"key": "rating_confirmed", "label": "Operator has confirmed the rail is safe for this component (no reference available)"}
+    ],
+    "limitations": [
+      "No reference record: electrical values are recorded but cannot be compared, so the screening result will be inconclusive unless an empirical baseline exists."
+    ],
+    "builtin": true
+  }
+]

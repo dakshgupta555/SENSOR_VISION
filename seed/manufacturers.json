@@ -1,0 +1,30 @@
+[
+  {
+    "id": "ti",
+    "name": "Texas Instruments",
+    "aliases": ["TI", "TEXAS INSTRUMENTS", "TEXAS"],
+    "website": "https://www.ti.com",
+    "notes": "Standard logic (SN74HC series) and LM358 operational amplifier references in this dataset."
+  },
+  {
+    "id": "nexperia",
+    "name": "Nexperia",
+    "aliases": ["NEXPERIA", "NXP", "PHILIPS"],
+    "website": "https://www.nexperia.com",
+    "notes": "Standard-logic business formerly part of NXP Semiconductors (and earlier Philips Semiconductors). Legacy parts may carry NXP or Philips marking."
+  },
+  {
+    "id": "microchip",
+    "name": "Microchip Technology",
+    "aliases": ["MICROCHIP", "ATMEL", "MCHP"],
+    "website": "https://www.microchip.com",
+    "notes": "Acquired Atmel in 2016. ATmega devices may carry either Atmel or Microchip marking."
+  },
+  {
+    "id": "espressif",
+    "name": "Espressif Systems",
+    "aliases": ["ESPRESSIF"],
+    "website": "https://www.espressif.com",
+    "notes": "ESP32 SoC and modules."
+  }
+]

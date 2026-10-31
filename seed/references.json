@@ -1,0 +1,251 @@
+[
+  {
+    "id": "ref-ti-sn74hc02n",
+    "manufacturer_id": "ti",
+    "part_number": "SN74HC02N",
+    "base_part": "74HC02",
+    "category": "logic_ic",
+    "description": "Quadruple 2-input positive-NOR gates (HC CMOS)",
+    "package": "PDIP-14 (N)",
+    "profile_id": "nor-74hc02-dip14",
+    "datasheet": {
+      "title": "SNx4HC02 Quadruple 2-Input Positive-NOR Gates",
+      "doc_id": "SCLS076G",
+      "revision": "Revised December 2020",
+      "url": "https://www.ti.com/lit/ds/symlink/sn74hc02.pdf"
+    },
+    "match_patterns": ["SN74HC02N", "SN74HC02", "74HC02N", "74HC02"],
+    "legacy_types": [],
+    "functional_description": "Four independent 2-input NOR gates. Y = NOT(A OR B).",
+    "test_conditions": "Electrical characteristics are specified at VCC = 2 V, 4.5 V and 6 V. IC VISION tests at a 3.3 V or 5 V rail; limits applied at other VCC values are marked as derived.",
+    "verification": {
+      "status": "verified_datasheet",
+      "checked_on": "2026-10-31",
+      "note": "Values transcribed from TI SCLS076G and checked against the published PDF when this dataset was built."
+    },
+    "specs": [
+      {"key": "vcc_range", "label": "Supply voltage (recommended)", "symbol": "VCC", "min": 2.0, "typ": 5.0, "max": 6.0, "unit": "V", "conditions": "Recommended operating conditions", "source_type": "oem", "verified": true},
+      {"key": "icc_static_max", "label": "Static supply current", "symbol": "ICC", "max": 20, "unit": "µA", "conditions": "VCC = 6 V, VI = VCC or 0, IO = 0, TA = −40 °C to 85 °C", "source_type": "oem", "verified": true},
+      {"key": "voh_2v", "label": "High-level output voltage", "symbol": "VOH", "min": 1.9, "unit": "V", "conditions": "VCC = 2 V, IOH = −20 µA", "source_type": "oem", "verified": true},
+      {"key": "voh_4v5", "label": "High-level output voltage", "symbol": "VOH", "min": 4.4, "unit": "V", "conditions": "VCC = 4.5 V, IOH = −20 µA", "source_type": "oem", "verified": true},
+      {"key": "voh_6v", "label": "High-level output voltage", "symbol": "VOH", "min": 5.9, "unit": "V", "conditions": "VCC = 6 V, IOH = −20 µA", "source_type": "oem", "verified": true},
+      {"key": "vol_max", "label": "Low-level output voltage", "symbol": "VOL", "max": 0.1, "unit": "V", "conditions": "VCC = 2 V, 4.5 V and 6 V, IOL = 20 µA", "source_type": "oem", "verified": true},
+      {"key": "voh_derived", "label": "Output high, light load (derived)", "symbol": "VOH", "min_offset_from_vcc": -0.1, "unit": "V", "conditions": "Datasheet gives VCC − 0.1 V at |IOH| = 20 µA for VCC = 2, 4.5 and 6 V; applied at the test VCC by interpolation", "source_type": "oem_derived", "verified": true},
+      {"key": "vol_derived", "label": "Output low, light load (derived)", "symbol": "VOL", "max": 0.1, "unit": "V", "conditions": "Datasheet gives 0.1 V max at IOL = 20 µA for VCC = 2, 4.5 and 6 V; applied at the test VCC", "source_type": "oem_derived", "verified": true},
+      {"key": "vih_4v5", "label": "High-level input voltage", "symbol": "VIH", "min": 3.15, "unit": "V", "conditions": "VCC = 4.5 V", "source_type": "oem", "verified": true},
+      {"key": "vil_4v5", "label": "Low-level input voltage", "symbol": "VIL", "max": 1.35, "unit": "V", "conditions": "VCC = 4.5 V", "source_type": "oem", "verified": true},
+      {"key": "ii_max", "label": "Input leakage current", "symbol": "II", "max": 0.1, "unit": "µA", "conditions": "VCC = 6 V, VI = VCC or 0, TA = 25 °C (±100 nA)", "source_type": "oem", "verified": true},
+      {"key": "tpd_4v5", "label": "Propagation delay A/B to Y", "symbol": "tpd", "typ": 9, "max": 18, "unit": "ns", "conditions": "VCC = 4.5 V, TA = 25 °C", "source_type": "oem", "verified": true}
+    ]
+  },
+  {
+    "id": "ref-nexperia-74hc02",
+    "manufacturer_id": "nexperia",
+    "part_number": "74HC02D",
+    "base_part": "74HC02",
+    "category": "logic_ic",
+    "description": "Quad 2-input NOR gate (HC CMOS)",
+    "package": "SO14 (SOT108-1)",
+    "profile_id": "nor-74hc02-dip14",
+    "datasheet": {
+      "title": "74HC02; 74HCT02 Quad 2-input NOR gate — Product data sheet",
+      "doc_id": "74HC_HCT02",
+      "revision": "Rev. 9, 15 February 2024",
+      "url": "https://assets.nexperia.com/documents/data-sheet/74HC_HCT02.pdf"
+    },
+    "match_patterns": ["74HC02D", "74HC02PW", "74HC02N", "74HC02"],
+    "legacy_types": [
+      {"type": "74HC02N", "package": "DIP14 (SOT27-1)", "removed_year": 2015, "note": "DIP14 type removed from the data sheet in revision 5 (2015)."}
+    ],
+    "functional_description": "Four independent 2-input NOR gates. Y = NOT(A OR B).",
+    "test_conditions": "Characteristics specified at VCC = 2.0 V, 4.5 V and 6.0 V.",
+    "verification": {
+      "status": "verified_datasheet",
+      "checked_on": "2026-10-31",
+      "note": "Values transcribed from the Nexperia 74HC_HCT02 data sheet (Rev. 9)."
+    },
+    "specs": [
+      {"key": "vcc_range", "label": "Supply voltage (recommended)", "symbol": "VCC", "min": 2.0, "typ": 5.0, "max": 6.0, "unit": "V", "conditions": "Recommended operating conditions, 74HC02", "source_type": "oem", "verified": true},
+      {"key": "icc_static_max", "label": "Static supply current", "symbol": "ICC", "max": 2.0, "unit": "µA", "conditions": "VCC = 6.0 V, VI = VCC or GND, IO = 0 A, Tamb = 25 °C", "source_type": "oem", "verified": true},
+      {"key": "icc_static_max_85", "label": "Static supply current", "symbol": "ICC", "max": 20, "unit": "µA", "conditions": "VCC = 6.0 V, Tamb = −40 °C to +85 °C", "source_type": "oem", "verified": true},
+      {"key": "icc_static_max_125", "label": "Static supply current", "symbol": "ICC", "max": 40, "unit": "µA", "conditions": "VCC = 6.0 V, Tamb = −40 °C to +125 °C", "source_type": "oem", "verified": true},
+      {"key": "voh_4v5", "label": "High-level output voltage", "symbol": "VOH", "min": 4.4, "unit": "V", "conditions": "VCC = 4.5 V, IO = −20 µA", "source_type": "oem", "verified": true},
+      {"key": "vol_max", "label": "Low-level output voltage", "symbol": "VOL", "max": 0.1, "unit": "V", "conditions": "VCC = 2.0 V, 4.5 V and 6.0 V, IO = 20 µA", "source_type": "oem", "verified": true},
+      {"key": "voh_derived", "label": "Output high, light load (derived)", "symbol": "VOH", "min_offset_from_vcc": -0.1, "unit": "V", "conditions": "Data sheet gives VCC − 0.1 V at IO = −20 µA for VCC = 2.0, 4.5 and 6.0 V; applied at the test VCC by interpolation", "source_type": "oem_derived", "verified": true},
+      {"key": "vol_derived", "label": "Output low, light load (derived)", "symbol": "VOL", "max": 0.1, "unit": "V", "conditions": "Data sheet gives 0.1 V max at IO = 20 µA for VCC = 2.0, 4.5 and 6.0 V; applied at the test VCC", "source_type": "oem_derived", "verified": true}
+    ]
+  },
+  {
+    "id": "ref-ti-sn74hc00n",
+    "manufacturer_id": "ti",
+    "part_number": "SN74HC00N",
+    "base_part": "74HC00",
+    "category": "logic_ic",
+    "description": "Quadruple 2-input NAND gates (HC CMOS)",
+    "package": "PDIP-14 (N)",
+    "profile_id": "nand-74hc00-dip14",
+    "datasheet": {
+      "title": "SN74HC00, SN54HC00 Quadruple 2-Input NAND Gates",
+      "doc_id": "SCLS181H",
+      "revision": "Revised August 2021",
+      "url": "https://www.ti.com/lit/ds/symlink/sn74hc00.pdf"
+    },
+    "match_patterns": ["SN74HC00N", "SN74HC00", "74HC00N", "74HC00"],
+    "legacy_types": [],
+    "functional_description": "Four independent 2-input NAND gates. Y = NOT(A AND B).",
+    "test_conditions": "Electrical characteristics are specified at VCC = 2 V, 4.5 V and 6 V.",
+    "verification": {
+      "status": "verified_datasheet",
+      "checked_on": "2026-10-31",
+      "note": "Values transcribed from TI SCLS181H and checked against the published PDF when this dataset was built."
+    },
+    "specs": [
+      {"key": "vcc_range", "label": "Supply voltage (recommended)", "symbol": "VCC", "min": 2.0, "typ": 5.0, "max": 6.0, "unit": "V", "conditions": "Recommended operating conditions", "source_type": "oem", "verified": true},
+      {"key": "icc_static_max", "label": "Static supply current", "symbol": "ICC", "max": 20, "unit": "µA", "conditions": "VCC = 6 V, VI = VCC or 0, IO = 0, TA = −40 °C to 85 °C", "source_type": "oem", "verified": true},
+      {"key": "voh_4v5", "label": "High-level output voltage", "symbol": "VOH", "min": 4.4, "unit": "V", "conditions": "VCC = 4.5 V, IOH = −20 µA", "source_type": "oem", "verified": true},
+      {"key": "vol_max", "label": "Low-level output voltage", "symbol": "VOL", "max": 0.1, "unit": "V", "conditions": "VCC = 2 V, 4.5 V and 6 V, IOL = 20 µA", "source_type": "oem", "verified": true},
+      {"key": "voh_derived", "label": "Output high, light load (derived)", "symbol": "VOH", "min_offset_from_vcc": -0.1, "unit": "V", "conditions": "Datasheet gives VCC − 0.1 V at |IOH| = 20 µA for VCC = 2, 4.5 and 6 V; applied at the test VCC by interpolation", "source_type": "oem_derived", "verified": true},
+      {"key": "vol_derived", "label": "Output low, light load (derived)", "symbol": "VOL", "max": 0.1, "unit": "V", "conditions": "Datasheet gives 0.1 V max at IOL = 20 µA for VCC = 2, 4.5 and 6 V; applied at the test VCC", "source_type": "oem_derived", "verified": true},
+      {"key": "vih_4v5", "label": "High-level input voltage", "symbol": "VIH", "min": 3.15, "unit": "V", "conditions": "VCC = 4.5 V", "source_type": "oem", "verified": true},
+      {"key": "vil_4v5", "label": "Low-level input voltage", "symbol": "VIL", "max": 1.35, "unit": "V", "conditions": "VCC = 4.5 V", "source_type": "oem", "verified": true},
+      {"key": "tpd_4v5", "label": "Propagation delay A/B to Y", "symbol": "tpd", "typ": 9, "max": 18, "unit": "ns", "conditions": "VCC = 4.5 V, TA = 25 °C", "source_type": "oem", "verified": true}
+    ]
+  },
+  {
+    "id": "ref-nexperia-74hc00",
+    "manufacturer_id": "nexperia",
+    "part_number": "74HC00D",
+    "base_part": "74HC00",
+    "category": "logic_ic",
+    "description": "Quad 2-input NAND gate (HC CMOS)",
+    "package": "SO14 (SOT108-1)",
+    "profile_id": "nand-74hc00-dip14",
+    "datasheet": {
+      "title": "74HC00; 74HCT00 Quad 2-input NAND gate — Product data sheet",
+      "doc_id": "74HC_HCT00",
+      "revision": "Rev. 11, 29 April 2025",
+      "url": "https://assets.nexperia.com/documents/data-sheet/74HC_HCT00.pdf"
+    },
+    "match_patterns": ["74HC00D", "74HC00PW", "74HC00N", "74HC00"],
+    "legacy_types": [
+      {"type": "74HC00N", "package": "DIP14 (SOT27-1)", "removed_year": 2015, "note": "DIP14 type removed from the data sheet in revision 7 (2015). Parts with NXP or Philips marking predate this."}
+    ],
+    "functional_description": "Four independent 2-input NAND gates. Y = NOT(A AND B).",
+    "test_conditions": "Characteristics specified at VCC = 2.0 V, 4.5 V and 6.0 V.",
+    "verification": {
+      "status": "verified_datasheet",
+      "checked_on": "2026-10-31",
+      "note": "Values transcribed from the Nexperia 74HC_HCT00 data sheet (Rev. 11). No 25 °C ICC maximum is listed for this device."
+    },
+    "specs": [
+      {"key": "vcc_range", "label": "Supply voltage (recommended)", "symbol": "VCC", "min": 2.0, "typ": 5.0, "max": 6.0, "unit": "V", "conditions": "Recommended operating conditions, 74HC00", "source_type": "oem", "verified": true},
+      {"key": "icc_static_max", "label": "Static supply current", "symbol": "ICC", "max": 20, "unit": "µA", "conditions": "VCC = 6.0 V, VI = VCC or GND, IO = 0 A, Tamb = −40 °C to +85 °C", "source_type": "oem", "verified": true},
+      {"key": "icc_static_max_125", "label": "Static supply current", "symbol": "ICC", "max": 40, "unit": "µA", "conditions": "VCC = 6.0 V, Tamb = −40 °C to +125 °C", "source_type": "oem", "verified": true},
+      {"key": "voh_4v5", "label": "High-level output voltage", "symbol": "VOH", "min": 4.4, "unit": "V", "conditions": "VCC = 4.5 V, IO = −20 µA", "source_type": "oem", "verified": true},
+      {"key": "vol_max", "label": "Low-level output voltage", "symbol": "VOL", "max": 0.1, "unit": "V", "conditions": "VCC = 2.0 V, 4.5 V and 6.0 V, IO = 20 µA", "source_type": "oem", "verified": true},
+      {"key": "voh_derived", "label": "Output high, light load (derived)", "symbol": "VOH", "min_offset_from_vcc": -0.1, "unit": "V", "conditions": "Data sheet gives VCC − 0.1 V at IO = −20 µA for VCC = 2.0, 4.5 and 6.0 V; applied at the test VCC by interpolation", "source_type": "oem_derived", "verified": true},
+      {"key": "vol_derived", "label": "Output low, light load (derived)", "symbol": "VOL", "max": 0.1, "unit": "V", "conditions": "Data sheet gives 0.1 V max at IO = 20 µA for VCC = 2.0, 4.5 and 6.0 V; applied at the test VCC", "source_type": "oem_derived", "verified": true}
+    ]
+  },
+  {
+    "id": "ref-ti-lm358p",
+    "manufacturer_id": "ti",
+    "part_number": "LM358P",
+    "base_part": "LM358",
+    "category": "op_amp",
+    "description": "Industry-standard dual operational amplifier",
+    "package": "PDIP-8 (P)",
+    "profile_id": "opamp-lm358-dip8",
+    "datasheet": {
+      "title": "LMx58, LMx58x, LM2904x Industry-Standard Dual Operational Amplifiers",
+      "doc_id": "SLOS068AB",
+      "revision": "Revised October 2024",
+      "url": "https://www.ti.com/lit/ds/symlink/lm358.pdf"
+    },
+    "match_patterns": ["LM358P", "LM358N", "LM358", "LM358A", "LM358B"],
+    "legacy_types": [],
+    "functional_description": "Two independent operational amplifiers with input common-mode range including ground, for single-supply operation.",
+    "test_conditions": "Quiescent current is specified per amplifier at VS = 5 V and VS = 30 V.",
+    "verification": {
+      "status": "verified_datasheet",
+      "checked_on": "2026-10-31",
+      "note": "Values transcribed from TI SLOS068AB. The datasheet specifies quiescent current per amplifier; the package figure is derived (× 2)."
+    },
+    "specs": [
+      {"key": "vcc_range", "label": "Supply voltage", "symbol": "VS", "min": 3, "max": 30, "unit": "V", "conditions": "VS = (V+) − (V−), LM358", "source_type": "oem", "verified": true},
+      {"key": "iq_per_amp", "label": "Quiescent current per amplifier", "symbol": "IQ", "typ": 350, "max": 600, "unit": "µA", "conditions": "VS = 5 V, VO = 2.5 V, IO = 0 A, TA = 0 °C to 70 °C", "source_type": "oem", "verified": true},
+      {"key": "icc_package", "label": "Supply current, both amplifiers (derived)", "symbol": "ICC", "typ": 700, "max": 1200, "unit": "µA", "conditions": "2 × per-amplifier IQ at VS = 5 V, no load", "source_type": "oem_derived", "verified": true},
+      {"key": "iq_per_amp_30v", "label": "Quiescent current per amplifier", "symbol": "IQ", "typ": 500, "max": 1000, "unit": "µA", "conditions": "VS = 30 V, VO = 15 V, IO = 0 A", "source_type": "oem", "verified": true},
+      {"key": "vio_max", "label": "Input offset voltage", "symbol": "VIO", "typ": 3, "max": 7, "unit": "mV", "conditions": "TA = 25 °C, LM358", "source_type": "oem", "verified": true},
+      {"key": "iib", "label": "Input bias current", "symbol": "IIB", "typ": -20, "max": -250, "unit": "nA", "conditions": "VO = 1.4 V, TA = 25 °C", "source_type": "oem", "verified": true},
+      {"key": "iio", "label": "Input offset current", "symbol": "IIO", "typ": 2, "max": 50, "unit": "nA", "conditions": "TA = 25 °C", "source_type": "oem", "verified": true}
+    ]
+  },
+  {
+    "id": "ref-microchip-atmega328p",
+    "manufacturer_id": "microchip",
+    "part_number": "ATmega328P-PU",
+    "base_part": "ATMEGA328P",
+    "category": "microcontroller",
+    "description": "8-bit AVR microcontroller, 32 KB flash",
+    "package": "PDIP-28",
+    "profile_id": "mcu-atmega328p-dip28",
+    "datasheet": {
+      "title": "ATmega328/P Datasheet Complete",
+      "doc_id": "Atmel-42735B",
+      "revision": "Rev. B, 11/2016",
+      "url": "https://www.microchip.com/en-us/product/ATmega328P"
+    },
+    "match_patterns": ["ATMEGA328P-PU", "ATMEGA328P", "MEGA328P", "ATMEGA328P-AU", "ATMEGA328PU"],
+    "legacy_types": [],
+    "functional_description": "AVR CPU with flash, SRAM, EEPROM, timers, USART, SPI, TWI and 10-bit ADC. Functional screening uses the IC VISION heartbeat firmware loaded on the device.",
+    "test_conditions": "The datasheet link points to the Microchip product page, where the current datasheet is published.",
+    "verification": {
+      "status": "partially_verified",
+      "checked_on": "2026-10-31",
+      "note": "Operating voltage, speed grades and the front-page current figures were checked against Atmel-42735B. The 8 MHz / 5 V active-current row and signature bytes are recorded but not re-verified in this build; confirm them before relying on them."
+    },
+    "specs": [
+      {"key": "vcc_range", "label": "Operating voltage", "symbol": "VCC", "min": 1.8, "max": 5.5, "unit": "V", "conditions": "ATmega328P", "source_type": "oem", "verified": true},
+      {"key": "speed_grade", "label": "Speed grade", "symbol": "fCLK", "text": "0–4 MHz @ 1.8–5.5 V; 0–10 MHz @ 2.7–5.5 V; 0–20 MHz @ 4.5–5.5 V", "unit": "", "conditions": "Features page", "source_type": "oem", "verified": true},
+      {"key": "icc_active_1mhz_1v8", "label": "Active supply current", "symbol": "ICC", "typ": 0.2, "unit": "mA", "conditions": "1 MHz, 1.8 V, 25 °C", "source_type": "oem", "verified": true},
+      {"key": "icc_powerdown_1v8", "label": "Power-down supply current", "symbol": "ICC", "typ": 0.1, "unit": "µA", "conditions": "1.8 V, 25 °C", "source_type": "oem", "verified": true},
+      {"key": "icc_active_8mhz_5v", "label": "Active supply current", "symbol": "ICC", "typ": 5.2, "max": 9, "unit": "mA", "conditions": "Active mode, 8 MHz, VCC = 5 V", "source_type": "oem", "verified": false, "note": "Not re-verified against the DC Characteristics table in this build."},
+      {"key": "device_signature", "label": "Device signature bytes", "symbol": "SIG", "text": "1E 95 0F", "unit": "", "conditions": "Read from signature row by the heartbeat firmware", "source_type": "oem", "verified": false, "note": "Confirm against the 'Signature Bytes' section of the datasheet."}
+    ]
+  },
+  {
+    "id": "ref-espressif-esp32",
+    "manufacturer_id": "espressif",
+    "part_number": "ESP32-WROOM-32",
+    "base_part": "ESP32",
+    "category": "microcontroller",
+    "description": "Wi-Fi + Bluetooth SoC (module form for breadboard testing)",
+    "package": "Module (ESP32-WROOM-32 / DevKit)",
+    "profile_id": "mcu-esp32-module",
+    "datasheet": {
+      "title": "ESP32 Series Datasheet",
+      "doc_id": "esp32_datasheet_en",
+      "revision": "Version 5.3",
+      "url": "https://www.espressif.com/sites/default/files/documentation/esp32_datasheet_en.pdf"
+    },
+    "match_patterns": ["ESP32-WROOM-32E", "ESP32-WROOM-32", "ESP32-D0WDQ6", "ESP32-D0WD", "ESP32"],
+    "legacy_types": [],
+    "functional_description": "Dual-core SoC. Functional screening listens for the ROM boot log on U0TXD after power-up.",
+    "test_conditions": "Supply current depends strongly on firmware and radio activity; ranges below are datasheet modem-sleep figures.",
+    "verification": {
+      "status": "verified_datasheet",
+      "checked_on": "2026-10-31",
+      "note": "Supply range and current-consumption figures transcribed from ESP32 Series Datasheet v5.3. The boot-log baud rate is not stated in the datasheet."
+    },
+    "specs": [
+      {"key": "vcc_range", "label": "Power supply (VDDA, VDD3P3, VDD3P3_RTC)", "symbol": "VDD", "min": 2.3, "typ": 3.3, "max": 3.6, "unit": "V", "conditions": "3.0 V minimum for chips with 3.3 V in-package flash or PSRAM", "source_type": "oem", "verified": true},
+      {"key": "supply_capability", "label": "Current from external supply", "symbol": "IVDD", "min": 0.5, "unit": "A", "conditions": "Recommended supply capability", "source_type": "oem", "verified": true},
+      {"key": "icc_modem_sleep_240", "label": "Modem-sleep current", "symbol": "ICC", "min": 30, "max": 68, "unit": "mA", "conditions": "240 MHz, dual-core", "source_type": "oem", "verified": true},
+      {"key": "icc_modem_sleep_80", "label": "Modem-sleep current", "symbol": "ICC", "min": 20, "max": 31, "unit": "mA", "conditions": "80 MHz, dual-core", "source_type": "oem", "verified": true},
+      {"key": "icc_envelope", "label": "Supply current envelope (modem-sleep, all CPU speeds)", "symbol": "ICC", "min": 20, "max": 68, "unit": "mA", "conditions": "Derived from modem-sleep rows (80–240 MHz); radio off", "source_type": "oem_derived", "verified": true},
+      {"key": "icc_light_sleep", "label": "Light-sleep current", "symbol": "ICC", "typ": 0.8, "unit": "mA", "conditions": "", "source_type": "oem", "verified": true},
+      {"key": "boot_log", "label": "ROM boot log on U0TXD", "symbol": "", "text": "Printed at reset when MTDO = 1 (default)", "unit": "", "conditions": "Baud rate (115200 with a 40 MHz crystal) is common practice, not stated in the datasheet", "source_type": "oem", "verified": true}
+    ]
+  }
+]

@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>IC VISION — Semiconductor Inspection Platform</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 34 34'%3E%3Crect width='34' height='34' rx='7' fill='%231769E8'/%3E%3Crect x='11' y='7' width='12' height='20' rx='1.5' fill='white'/%3E%3Cg stroke='white' stroke-width='2'%3E%3Cpath d='M4 11h5M4 17h5M4 23h5M25 11h5M25 17h5M25 23h5'/%3E%3C/g%3E%3Ccircle cx='14' cy='10.5' r='1.6' fill='%2300B8D9'/%3E%3C/svg%3E">
+  <link rel="stylesheet" href="/static/css/app.css">
+  <script src="/static/vendor/chart.umd.min.js"></script>
+  <script src="/static/vendor/lucide.min.js"></script>
+</head>
+<body>
+<div class="app">
+  <aside class="sidebar">
+    <div class="brand">
+      <svg class="brand-mark" viewBox="0 0 34 34" aria-hidden="true">
+        <rect width="34" height="34" rx="7" fill="#1769E8"/>
+        <rect x="11" y="7" width="12" height="20" rx="1.5" fill="#fff"/>
+        <g stroke="#fff" stroke-width="2"><path d="M4 11h5M4 17h5M4 23h5M25 11h5M25 17h5M25 23h5"/></g>
+        <circle cx="14" cy="10.5" r="1.6" fill="#00B8D9"/>
+        <path d="M13.5 21.5h7" stroke="#1769E8" stroke-width="1.4"/><path d="M13.5 18.5h5" stroke="#1769E8" stroke-width="1.4"/>
+      </svg>
+      <div>
+        <div class="brand-name">IC VISION</div>
+        <div class="brand-sub">Every chip leaves an electrical signature</div>
+      </div>
+    </div>
+    <nav class="nav" id="nav">
+      <div class="nav-group">Inspect</div>
+      <a href="#/home" data-route="home"><i data-lucide="layout-dashboard"></i>Home</a>
+      <a href="#/inspection" data-route="inspection"><i data-lucide="scan-line"></i>New Inspection</a>
+      <a href="#/live" data-route="live"><i data-lucide="activity"></i>Live Monitoring</a>
+      <div class="nav-group">Analysis</div>
+      <a href="#/optical" data-route="optical"><i data-lucide="scan-eye"></i>Optical Inspection</a>
+      <a href="#/score" data-route="score"><i data-lucide="gauge"></i>Trust Score Engine</a>
+      <div class="nav-group">Reference</div>
+      <a href="#/library" data-route="library"><i data-lucide="cpu"></i>Component Library</a>
+      <a href="#/manufacturers" data-route="manufacturers"><i data-lucide="database"></i>Manufacturer Database</a>
+      <div class="nav-group">Records</div>
+      <a href="#/history" data-route="history"><i data-lucide="history"></i>Inspection History</a>
+      <a href="#/reports" data-route="reports"><i data-lucide="file-text"></i>Reports</a>
+      <div class="nav-group">System</div>
+      <a href="#/settings" data-route="settings"><i data-lucide="settings-2"></i>Device Settings</a>
+    </nav>
+    <div class="sidebar-foot" id="sidebar-foot">IC VISION</div>
+  </aside>
+  <div class="main">
+    <header class="topbar">
+      <div class="topbar-title">
+        <h1 id="page-title">IC VISION</h1>
+        <div class="sub">Semiconductor Inspection Platform</div>
+      </div>
+      <div class="topbar-status">
+        <div class="mode-switch" id="mode-switch" role="group" aria-label="Operating mode">
+          <button data-mode="live" class="live"><i data-lucide="cable"></i>Live hardware</button>
+          <button data-mode="simulation" class="sim"><i data-lucide="flask-conical"></i>Simulation</button>
+        </div>
+        <span class="status-chip" id="hw-chip"><span class="dot"></span><span>Starting…</span></span>
+        <span class="status-chip" id="port-chip"><span class="k">Port</span><span>—</span></span>
+        <span class="clock" id="clock">—</span>
+      </div>
+    </header>
+    <div class="sim-banner" id="sim-banner" hidden>
+      <i data-lucide="flask-conical"></i>
+      <span><b>SIMULATION MODE</b> — values on screen are generated, not measured. <span id="sim-banner-profile"></span></span>
+    </div>
+    <main class="view" id="view"></main>
+  </div>
+</div>
+<div id="modal-root"></div>
+<div id="toasts" aria-live="polite"></div>
+<script type="module" src="/static/js/app.js"></script>
+</body>
+</html>
